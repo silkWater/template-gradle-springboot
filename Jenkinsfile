@@ -1,8 +1,8 @@
 def ecrLoginHelper="docker-credential-ecr-login"
 def region="ap-northeast-2"
 def ecrUrl="827643483459.dkr.ecr.ap-northeast-2.amazonaws.com"
-def repository="template"
-def deployHost="172.31.38.58"
+def repository="template-springboot"
+def deployHost="172.31.6.64"
 
 
 pipeline {
@@ -40,7 +40,7 @@ pipeline {
                     sh "ssh -o StrictHostKeyChecking=no ubuntu@${deployHost} \
                      'aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${ecrUrl}/${repository}; \
                       sleep 3; \
-                      docker run -d -p 8080:8080 -t ${ecrUrl}/${repository}:${currentBuild.number};'"
+                      docker run -d -p 80:8080 -t ${ecrUrl}/${repository}:${currentBuild.number};'"
                 }
             }
         }
