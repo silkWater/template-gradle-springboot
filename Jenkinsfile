@@ -1,9 +1,8 @@
 def ecrLoginHelper="docker-credential-ecr-login"
 def region="ap-northeast-2"
 def ecrUrl="827643483459.dkr.ecr.ap-northeast-2.amazonaws.com"
-def repository="template-springboot"
+def repository="template-gradle-springboot"
 def deployHost="172.31.6.64"
-
 
 pipeline {
     agent any
